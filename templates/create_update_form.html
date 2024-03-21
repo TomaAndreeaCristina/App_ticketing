@@ -1,0 +1,18 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">update information for !</br> va rugam sa apelati la noi cu incredere!</p></div>
+    </div>
+    <div class="row gx-4 gx-lg-5">
+    <form class="row gy-2 gx-3 align-items-center" method="post">
+        {% csrf_token %}<!--forma face parte din site curent-->
+        {{ form.as_table }}
+        
+         <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Submit</button>
+         </div>
+    </form>
+</div>
+
+{% endblock %}

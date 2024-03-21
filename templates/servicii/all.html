@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">Acestea sunt serviciile oferite de compania noastra</p></div>
+
+        <div class="card-body">
+            <a class="btn btn-primary btn-sm" href="{% url 'add-serviciu' %}">Create new service</a>
+        </div>
+    </div>
+    <div class="row gx-4 gx-lg-5">
+
+        {% for serviciu in object_list %}
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ serviciu.categorie_servicii }}</h2>
+                        <p class="card-text">{{ serviciu.nume_angajat }}.</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm"
+                                                href="{% url 'serviciu-detail' %}">More Info</a></div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

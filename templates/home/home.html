@@ -1,0 +1,25 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
+                                   src="{% static 'assets/blog-1.jpg' %}" alt="..."/></div>
+        <div class="col-lg-5">
+            <div>
+                <h1 class="font-weight-light">Smart Ticketing For Bussines</h1>
+                <p>Buna ziua si bine ati venit in aplicatia dezvoltata pentru partenerii nostrii de afaceri, pentru a
+                    solutiona orice problema intampinata de dumneavoastra</p>
+                <a class="btn btn-primary" href="{% url 'ticket-add' %}"> Deschide un ticket!</a>
+            </div>
+        </div>
+    </div>
+    <!-- Call to Action-->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some
+            important information or display a clever tagline!</p></div>
+    </div>
+    
+{% endblock content %}

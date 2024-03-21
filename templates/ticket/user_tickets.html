@@ -1,0 +1,9 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+    {% for ticket  in tickets %}
+        <div> {{ ticket.nume_societate }}</div>
+    {% endfor %}
+
+{% endblock %}

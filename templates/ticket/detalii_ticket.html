@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">Update information </p></div>
+    </div>
+
+    <div class="row gx-4 gx-lg-5">
+        <form class="row gy-2 gx-3 align-items-center" method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{% url 'home' %}" class="btn btn-primary">go to home page</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

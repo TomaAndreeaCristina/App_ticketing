@@ -1,0 +1,11 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+  <h5>{{ object.status_ticket }}</h5>
+    <div>
+    <a href="{% url 'home-page' %}" class="btn btn-primary">go to home page</a>
+    </div>
+{% endblock content %}

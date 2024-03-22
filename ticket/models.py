@@ -12,8 +12,7 @@ from django.utils import timezone
 
 class TicketModel(models.Model):
     nume_societate = models.CharField(max_length=50, null=False)
-    nume_user = models.CharField(max_length=50, null=False)
-    descriere_ticket = models.CharField(max_length=1000, null=False)
+    descriere_ticket = models.TextField(max_length=1000, null=False)
     status_ticket = models.CharField(max_length=50, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     data_inregistrare_ticket = models.DateTimeField(default=timezone.now, null=False)

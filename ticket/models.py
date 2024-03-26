@@ -11,12 +11,23 @@ from django.utils import timezone
 from authentication.models import CustomUser
 
 
+
+
+class TicketStatus(models.Model):
+    STATUS_CHOICES = (
+        (1, 'Nou'),
+        (2, 'Preluat'),
+        (3, 'Inchis'),
+    )
+    status = models.IntegerField(choices=STATUS_CHOICES, default=1)
+
+
 # Create your models here.
 
 class TicketModel(models.Model):
     nume_societate = models.CharField(max_length=50, null=False)
     descriere_ticket = models.TextField(max_length=1000, null=False)
-    status_ticket = models.CharField(max_length=50, null=False)
+    status_ticket = models.ForeignKey(TicketStatus, on_delete=models.CASCADE, null=False)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     data_inregistrare_ticket = models.DateTimeField(auto_now_add=True, null=False)
     data_inchidere_ticket = models.DateTimeField(auto_now=True, null=False)

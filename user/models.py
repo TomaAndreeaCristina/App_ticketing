@@ -4,6 +4,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db import models
 
+from authentication.models import CustomUser
+
+
 # Create your models here.
 class UserModel(models.Model):
     nume_user = models.CharField(max_length=50,null=False)
@@ -13,7 +16,7 @@ class UserModel(models.Model):
     nume_societate = models.CharField(max_length=50,null=False)
     cui_societate = models.CharField(max_length=10,null=False)
     angajat = models.BooleanField(default=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
 
     def __str__(self):

@@ -10,5 +10,5 @@ class CreateUserForm(UserCreationForm):
         fields = ['username', 'first_name', 'last_name', 'departament']
 
     def save(self, commit=True):
-        self.instance.is_active = False
+        self.instance.is_active = True
         return super().save(commit)

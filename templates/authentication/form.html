@@ -1,9 +1,14 @@
 {% extends 'layout/base.html' %}
+{% load static %}
 
 {% block content %}
+    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
+                               src="{% static 'assets/computer.jpg' %}" alt="..."/></div>
     <form method="post">
         {% csrf_token %}
         <table>{{ form }}</table>
         <input type="submit" value="Submit" class="btn btn-primary">
+        <p>Nu aveti cont? Click pe <b>"Register</b>"</p>
+        <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
     </form>
 {% endblock %}

@@ -1,11 +1,14 @@
 {% extends 'layout/base.html' %}
 {% load static %}
 
-
-
 {% block content %}
-  <h5>{{ object.status_ticket }}</h5>
-    <div>
-    <a href="{% url 'home-page' %}" class="btn btn-primary">go to home page</a>
+
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">Acestea sunt serviciile oferite de compania noastra</p></div>
+
+        <div class="card-body">
+            <a class="btn btn-primary btn-sm" href="{% url 'ticket-add' %}">Deschide un ticket</a>
+        </div>
     </div>
-{% endblock content %}
+
+{% endblock %}

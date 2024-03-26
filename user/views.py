@@ -1,18 +1,5 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
-
-from servicii.forms import ServiciiForm
-from servicii.models import ServiciiModel
 from user.forms import UserForm
 from user.models import UserModel
 
@@ -27,6 +14,7 @@ class UserListView(ListView):
 class UserDetaislView(DetailView):
     template_name = 'user/detalii.html'
     model = UserModel
+
 
 class UserUpdateView(UpdateView):
     template_name = 'user/create_update_form.html'
@@ -47,3 +35,4 @@ class UserCreateView(CreateView):
     template_name = 'user/create_update_form.html'
     model = UserModel
     success_url = reverse_lazy('user-all')
+

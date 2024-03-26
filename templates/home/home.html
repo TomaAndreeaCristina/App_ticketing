@@ -12,14 +12,16 @@
                 <h1 class="font-weight-light">Smart Ticketing For Bussines</h1>
                 <p>Buna ziua si bine ati venit in aplicatia dezvoltata pentru partenerii nostrii de afaceri, pentru a
                     solutiona orice problema intampinata de dumneavoastra</p>
-                <a class="btn btn-primary" href="{% url 'ticket-add' %}"> Deschide un ticket!</a>
+                <a class="btn btn-primary" href="{% url 'login' %}"> Login!</a>
+                <p>Nu aveti cont? Click pe <b>"Register</b>"</p>
+                <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
             </div>
         </div>
     </div>
     <!-- Call to Action-->
     <div class="card text-white bg-secondary my-5 py-4 text-center">
-        <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some
-            important information or display a clever tagline!</p></div>
+        <div class="card-body"><p class="text-white m-0">Pentru a accesa contul trebuie sa va autentificati in
+            aplicatie, daca nu aveti inca un cont deschis , puteti accesa butonul REGISTER</p></div>
     </div>
-    
+
 {% endblock content %}

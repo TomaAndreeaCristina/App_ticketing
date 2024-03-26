@@ -58,10 +58,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'App_ticketing.urls'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'user_tickets'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'home'
-
+AUTH_USER_MODEL = 'authentication.CustomUser'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

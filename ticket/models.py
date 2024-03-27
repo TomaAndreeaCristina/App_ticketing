@@ -27,10 +27,10 @@ class TicketStatus(models.Model):
 class TicketModel(models.Model):
     nume_societate = models.CharField(max_length=50, null=False)
     descriere_ticket = models.TextField(max_length=1000, null=False)
-    status_ticket = models.ForeignKey(TicketStatus, on_delete=models.CASCADE, null=False)
+    #status_ticket = models.ForeignKey(TicketStatus, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
-    data_inregistrare_ticket = models.DateTimeField(auto_now_add=True, null=False)
-    data_inchidere_ticket = models.DateTimeField(auto_now=True, null=False)
+    data_inregistrare_ticket = models.DateField(auto_now_add=True, null=False)
+    data_inchidere_ticket = models.DateField(auto_now=True, null=False)
 
     # servicii = models.ForeignKey('ServiciiModel', on_delete=models.DO_NOTHING)
     # def __str__(self):

@@ -18,7 +18,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Ticket {{ ticket.id }}</h5>
                         <p class="card-text">Nume societate: {{ ticket.nume_societate }}</p>
-                        <p class="card-text">Descriere:{{ ticket.descriere_ticket }}</p>
+                        <p class="card-text">Descriere:
+                            {% autoescape off %}{{ ticket.descriere_ticket|linebreaksbr }}{% endautoescape %}</p>
                         <p class="card-text">Status: {{ ticket.status_ticket }}</p>
                         <p class="card-text">Data deschiderii: {{ ticket.data_inregistrare_ticket }}</p>
                         <p class="card-text">Data închiderii: {{ ticket.data_inchidere_ticket }}</p>
@@ -29,7 +30,6 @@
                             <textarea id="modificari" name="modificari" rows="4" cols="50"
                                       placeholder="Introduceți modificările"></textarea>
                             <input type="submit" value="Adaugă modificări" class="btn btn-success">
-
                         </form>
 
                         <div class="text-md-end" style="position: absolute; right: 10px;">

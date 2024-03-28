@@ -1,33 +1,23 @@
-from django.db import models
-
-# Create your models here.
-from django.db import models
-
-# Create your models here.
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-
 from authentication.models import CustomUser
 
 
-
-
+# Create your models here.
 class TicketStatus(models.Model):
     STATUS_CHOICES = (
-        (1, 'Nou'),
-        (2, 'Preluat'),
-        (3, 'Inchis'),
+        ("Nou", 'Nou'),
+        ("Preluat", 'Preluat'),
+        ("Inchis", 'Inchis'),
     )
-    status = models.IntegerField(choices=STATUS_CHOICES, default=1)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="Nou")
 
-
-# Create your models here.
 
 class TicketModel(models.Model):
     nume_societate = models.CharField(max_length=50, null=False)
     descriere_ticket = models.TextField(max_length=1000, null=False)
-    #status_ticket = models.ForeignKey(TicketStatus, on_delete=models.CASCADE, null=True)
+    status_ticket = models.CharField(max_length=20, choices=TicketStatus.STATUS_CHOICES, default='Nou')
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     data_inregistrare_ticket = models.DateField(auto_now_add=True, null=False)
     data_inchidere_ticket = models.DateField(auto_now=True, null=False)

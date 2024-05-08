@@ -14,7 +14,15 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.sendgrid.net'  # Adresa serverului SMTP
+# EMAIL_PORT = 587  # Portul serverului SMTP
+# EMAIL_HOST_USER = 'apikey'  # Adresa de e-mail pentru autentificare la serverul SMTP
+# SENDGRID_API_KEY = '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'  # Parola pentru autentificare la serverul SMTP
+# EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+# EMAIL_USE_TLS = True  # Activare TLS pentru securitate
 
+# DEFAULT_FROM_EMAIL = 'purcareaalex91@gmail.com'  # Adresa de e-mail implicită pentru mesajele trimise
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -26,7 +34,6 @@ SECRET_KEY = 'django-insecure-l$#oqa1w0gg)#+2ahy16kusi)+n30kd)am0u+g)t1rbz-4f!h-
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -41,8 +48,8 @@ INSTALLED_APPS = [
     'servicii',
     'ticket',
     'user',
-    'authentication'
-
+    'authentication',
+    'crispy_forms',
 
 ]
 
@@ -81,7 +88,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'App_ticketing.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -91,7 +97,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -111,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -123,7 +127,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -134,3 +137,5 @@ STATICFILES_DIRS = ['static/']
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#CRISPY_TEMPLATE_PACK = 'bootstrap4'

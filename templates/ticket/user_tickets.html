@@ -1,16 +1,16 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-    <div class="text-md-end" style="position: absolute; right: 10px;">
+    <div class="text-md-end" style="position: absolute; right: 10px; margin-top: 35px;">
         <a href="{% url 'ticket-add' %}" class="btn btn-primary">Deschide un Ticket Nou</a>
     </div>
 
     {% if tickets %}
-        <h1>Detalii despre ticket</h1>
+        <h1>Detalii ticket</h1>
         <ul>
             <style>
                 .card + .card {
-                    margin-top: 20px;
+                    margin-top: 45px;
                 }
             </style>
             {% for ticket in tickets %}
@@ -20,10 +20,23 @@
                         <p class="card-text">Nume societate: {{ ticket.nume_societate }}</p>
                         <p class="card-text">Descriere:
                             {% autoescape off %}{{ ticket.descriere_ticket|linebreaksbr }}{% endautoescape %}</p>
+
+                        {% for modificare in ticket.modificari.all %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title">Modificare adăugată de: {{ modificare.user.username }}</h6>
+
+                                </div>
+                            </div>
+
+
+                        {% endfor %}
+
                         <p class="card-text">Status: {{ ticket.status_ticket }}</p>
                         <p class="card-text">Data deschiderii: {{ ticket.data_inregistrare_ticket|date:"Y-m-d" }}</p>
                         <p class="card-text">Data închiderii: {{ ticket.data_inchidere_ticket|date:"Y-m-d" }}</p>
 
+                        <!--Adaugare modificari ticket-->
                         <form method="post" action="{% url 'edit-ticket' ticket.id %}">
                             {% csrf_token %}
                             <label for="modificari">Modificări:</label>
@@ -32,7 +45,16 @@
                             <input type="submit" value="Adaugă modificări" class="btn btn-success">
                         </form>
 
-                        <div class="text-md-end" style="position: absolute; right: 10px;">
+                        <!--Adaugare documente-->
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <!-- Alte câmpuri pentru formularul de bilet -->
+                            <label for="document">Încărcați document:</label>
+                            <input type="file" name="document" id="document">
+                            <input type="submit" value="Trimiteți">
+                        </form>
+
+                        <div class="text-md-end" style="position: relative; right: 10px;margin-top: 20px;">
                             <a href="{% url 'delete_ticket' ticket.id %}" class="btn btn-primary">Sterge Ticketul</a>
                         </div>
                     </div>

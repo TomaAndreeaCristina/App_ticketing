@@ -10826,3 +10826,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.my-form {
+    max-width: 200px; /* Defineste lățimea maximă a formularului */
+    margin: 0 auto; /* Centrarea formularului */
+}

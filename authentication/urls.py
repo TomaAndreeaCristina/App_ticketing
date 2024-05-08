@@ -6,5 +6,7 @@ urlpatterns = [
     path('logout/', LogOutUserView.as_view(), name='logout'),
     path('register/', CreateUserView.as_view(), name='register'),
     path('password-change/', UserChangePasswordView.as_view(), name='password-change'),
+    path('register-company/', company_register, name='register-company'),
+    path('register-user/', user_register, name='register-user'),
 
 ]

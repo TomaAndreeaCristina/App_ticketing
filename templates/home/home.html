@@ -3,6 +3,11 @@
 
 
 {% block content %}
+    {% if user.is_authenticated %}
+        <div class="text-md-end" style="position: absolute; right: 10px;margin-top: 10px;">
+            <a class="btn btn-primary" href="{% url 'user_tickets' %}"> Ticketele mele!</a>
+        </div>
+    {% endif %}
     <!-- Heading Row-->
     <div class="row gx-4 gx-lg-5 align-items-center my-5">
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"

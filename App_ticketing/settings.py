@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'ticket',
     'user',
     'authentication',
-    'crispy_forms',
 
 ]
 

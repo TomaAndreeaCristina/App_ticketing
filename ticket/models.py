@@ -21,7 +21,6 @@ class TicketModel(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     data_inregistrare_ticket = models.DateField(auto_now_add=True, null=False)
     data_inchidere_ticket = models.DateField(auto_now=True, null=False)
+    document = models.FileField(upload_to='documents/', null=True, blank=True)
 
-    # servicii = models.ForeignKey('ServiciiModel', on_delete=models.DO_NOTHING)
-    # def __str__(self):
-    #     return f"{self.nume_user} a deschis ticket nr - {self.id}"
+

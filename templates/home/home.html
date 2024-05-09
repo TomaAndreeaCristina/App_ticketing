@@ -4,29 +4,33 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <div class="text-md-end" style="position: absolute; right: 10px;margin-top: 10px;">
+        <div class="text-md-end" style="position: absolute; right: 10px;margin-top: 40px;">
             <a class="btn btn-primary" href="{% url 'user_tickets' %}"> Ticketele mele!</a>
         </div>
     {% endif %}
     <!-- Heading Row-->
-    <div class="row gx-4 gx-lg-5 align-items-center my-5">
-        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
-                                   src="{% static 'assets/blog-1.jpg' %}" alt="..."/></div>
-        <div class="col-lg-5">
-            <div>
-                <h1 class="font-weight-light">Smart Ticketing For Bussines</h1>
-                <p>Buna ziua si bine ati venit in aplicatia dezvoltata pentru partenerii nostrii de afaceri, pentru a
-                    solutiona orice problema intampinata de dumneavoastra</p>
-                <a class="btn btn-primary" href="{% url 'login' %}"> Login!</a>
-                <p>Nu aveti cont? Click pe <b>"Register</b>"</p>
-                <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="text-center">
+                    <h1 class="font-weight-light">Smart Ticketing For Business</h1>
+                    <p>Bună ziua și bine ați venit în aplicația dezvoltată pentru partenerii noștri de afaceri, pentru a
+                        soluționa orice problemă întâmpinată de dumneavoastră.</p>
+                    <div>
+                        <a class="btn btn-primary me-2" href="{% url 'login' %}">Login</a>
+                        <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+                    </div>
+                    <p>Nu aveți cont? Click pe <b>"Register"</b></p>
+                </div>
             </div>
         </div>
     </div>
+
+
     <!-- Call to Action-->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
-        <div class="card-body"><p class="text-white m-0">Pentru a accesa contul trebuie sa va autentificati in
-            aplicatie, daca nu aveti inca un cont deschis , puteti accesa butonul REGISTER</p></div>
-    </div>
+        <div class="card text-white bg-secondary my-5 py-4 text-center">
+            <div class="card-body"><p class="text-white m-0">Pentru a accesa contul trebuie sa va autentificati in
+                aplicatie, daca nu aveti inca un cont deschis , puteti accesa butonul REGISTER</p></div>
+        </div>
 
 {% endblock content %}

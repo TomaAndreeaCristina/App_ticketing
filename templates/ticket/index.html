@@ -1,28 +1,35 @@
 {% extends 'layout/base.html' %}
 {% block title %} Tickets {% endblock %}
 {% block content %}
+<style>
+    /* CSS styles for ticket lines */
+    .ticket-row {
+        background-color: white;
+    }
+</style>
+
 <table class="styled-table">
- <thead>
-  <tr>
-   <th>Numar Ticket&nbsp;&nbsp;&nbsp;</th>
-   <th>Descriere&nbsp;&nbsp;&nbsp;</th>
-   <th>Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-   <th>User&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-   <th>Data deschidere&nbsp;</th>
-   <th>Data inchidere </th>
-  </tr>
- </thead>
- <tbody>
-  {% for ticket in tickets %}
-  <tr>
-   <td><a href="{% url 'ticket-detail' ticket.id %}">{{ ticket.id }}</a></td>
-   <td>{{ ticket.nume_societate }}</td>
-   <td>{{ ticket.status_ticket }}</td>
-   <td>{{ ticket.user }}</td>
-   <td>{{ ticket.data_inregistrare_ticket }}</td>
-   <td>{{ ticket.data_inchidere_ticket }}</td>
-  </tr>
-  {% endfor %}
- </tbody>
+    <thead>
+        <tr class= "ticket-row">
+            <th>Numar Ticket&nbsp;&nbsp;&nbsp;</th>
+            <th>Descriere&nbsp;&nbsp;&nbsp;</th>
+            <th>Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>User&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>Data deschidere&nbsp;</th>
+            <th>Data inchidere </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ticket in tickets %}
+        <tr class="ticket-row">
+            <td><a href="{% url 'ticket-detail' ticket.id %}">{{ ticket.id }}</a></td>
+            <td>{{ ticket.nume_societate }}</td>
+            <td>{{ ticket.status_ticket }}</td>
+            <td>{{ ticket.user }}</td>
+            <td>{{ ticket.data_inregistrare_ticket }}</td>
+            <td>{{ ticket.data_inchidere_ticket }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 {% endblock %}

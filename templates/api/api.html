@@ -1,0 +1,16 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="text-md-end" style="position: absolute; right: 10px;margin-top: 10px;">
+            <a class="btn btn-primary" href="{% url 'user_tickets' %}"> Ticketele mele!</a>
+        </div>
+    {% endif %}
+    <!-- Heading Row-->
+    <a href="{% url 'usersapi' %}">Users API</a>
+    <a href="{% url 'tokens' %}">Tokens</a>
+    <a href="{% url 'code-explain' %}">Code Explain</a>
+
+{% endblock content %}

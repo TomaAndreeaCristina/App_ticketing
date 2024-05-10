@@ -21,16 +21,16 @@
                         <p class="card-text">Descriere:
                             {% autoescape off %}{{ ticket.descriere_ticket|linebreaksbr }}{% endautoescape %}</p>
 
-                        {% for modificare in ticket.modificari.all %}
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">Modificare adăugată de: {{ modificare.user.username }}</h6>
-
-                                </div>
-                            </div>
-
-
-                        {% endfor %}
+{#                        {% for modificare in ticket.modificari.all %}#}
+{#                            <div class="card">#}
+{#                                <div class="card-body">#}
+{#                                    <h6 class="card-title">Modificare adăugată de: {{ modificare.user.username }}</h6>#}
+{##}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{##}
+{#                        {% endfor %}#}
 
                         <p class="card-text">Status: {{ ticket.status_ticket }}</p>
                         <p class="card-text">Data deschiderii: {{ ticket.data_inregistrare_ticket|date:"Y-m-d" }}</p>

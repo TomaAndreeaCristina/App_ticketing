@@ -1,7 +1,7 @@
 from django.urls import path
 from servicii.views import ServiciiUpdateView, ServiciiCreateView, ServiciiDeleteView
 from ticket.views import TicketDetailsView, UserTicketListView, CreateTicketView, CreateUpdateFormView, EditTicketView, \
-    DeleteTicketView, ListaTicketView
+    DeleteTicketView, ListaTicketView, EditTicketIdView
 from . import views
 
 urlpatterns = [
@@ -14,5 +14,6 @@ urlpatterns = [
     path('delete-ticket/<int:ticket_id>/', DeleteTicketView.as_view(), name='delete_ticket'),
     # path('lista_tickete/', ListaTicketView.as_view(), name='lista_tickete'),
     path('lista_tickete/', views.index, name='index'),
-    path('ticket/<int:ticket_id>/', views.ticket_by_id, name='ticket-detail')
+    path('ticket/<int:ticket_id>/', views.ticket_by_id, name='ticket-detail'),
+    path('edit-idticket/<int:ticket_id>/', EditTicketIdView.as_view(), name='edit-idticket'),
 ]

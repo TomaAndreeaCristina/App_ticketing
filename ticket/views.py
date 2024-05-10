@@ -3,7 +3,7 @@ from rest_framework import viewsets
 
 from ticket.forms import TicketForm, SolveTicketForm
 from ticket.models import TicketModel
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView, FormView, TemplateView
 from django.shortcuts import redirect
 from django.utils import timezone
@@ -32,6 +32,17 @@ class CreateTicketView(CreateView):
 
 class UserTicketListView(ListView):
     template_name = 'ticket/user_tickets.html'
+    model = TicketModel
+    context_object_name = 'tickets'
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['tickets'] = TicketModel.objects.filter(user=self.request.user)
+        return data
+
+
+class UserTicketListIdView(ListView):
+    template_name = 'ticket/ticket_by_id.html'
     model = TicketModel
     context_object_name = 'tickets'
 
@@ -73,6 +84,25 @@ class EditTicketView(View):
         ticket.save()
 
         return redirect('user_tickets')
+
+
+class EditTicketIdView(View):
+    def get(self, request, ticket_id):
+        # Add code to handle GET requests here
+        ticket = TicketModel.objects.get(pk=ticket_id)
+        return render(request, 'ticket/ticket_by_id.html', {'ticket': ticket})
+
+    def post(self, request, ticket_id):
+        # Add code to handle POST requests here
+        modificari = request.POST.get('modificari')
+        ticket = TicketModel.objects.get(pk=ticket_id)
+
+        # Actualizăm descrierea tichetului cu modificările introduse
+        ticket.descriere_ticket += f"\n Modificări: {modificari} {ticket.data_inchidere_ticket}\n"
+        ticket.save()
+
+        # Redirect back to the same view with the same ticket_id
+        return redirect(reverse('edit-idticket', kwargs={'ticket_id': ticket_id}))
 
 
 class DeleteTicketView(DeleteView):

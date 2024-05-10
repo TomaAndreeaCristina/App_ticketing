@@ -1,0 +1,24 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>All Tickets</title>
+    </head>
+    <body>
+    <h1>All Tickets</h1>
+    <ul>
+        {% for ticket in tickets %}
+            <li>
+                <strong>Company Name:</strong> {{ ticket.nume_societate }}<br>
+                <strong>Description:</strong> {{ ticket.descriere_ticket|truncatechars:50 }}<br>
+                <strong>Username:</strong> {{ ticket.user.username }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    </body>
+
+{% endblock content %}

@@ -1,4 +1,6 @@
 # Create your views here.
+from rest_framework import viewsets
+
 from ticket.forms import TicketForm, SolveTicketForm
 from ticket.models import TicketModel
 from django.urls import reverse_lazy
@@ -7,6 +9,9 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from django.views.generic.edit import UpdateView
 from django.views.generic import View
+from django.shortcuts import render
+from user.models import UserModel
+from django.http import HttpResponse
 
 
 class CreateTicketView(CreateView):
@@ -79,3 +84,21 @@ class DeleteTicketView(DeleteView):
     def get_object(self, queryset=None):
         ticket_id = self.kwargs.get('ticket_id')
         return TicketModel.objects.get(pk=ticket_id)
+
+
+class ListaTicketView(ListView):
+    template_name = 'ticket/lista_tickete.html'
+    context_object_name = 'tickets'
+
+    def get_queryset(self):
+        return UserModel.objects.prefetch_related('tickets').all()
+
+
+def index(request):
+    tickets = TicketModel.objects.order_by('data_inregistrare_ticket')[:50]
+    return render(request, 'ticket/index.html', {'tickets': tickets})
+
+
+def ticket_by_id(request, ticket_id):
+    ticket = TicketModel.objects.get(pk=ticket_id)
+    return render(request, 'ticket/ticket_by_id.html', {'ticket': ticket})

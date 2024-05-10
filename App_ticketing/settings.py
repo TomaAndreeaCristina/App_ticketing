@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.sendgrid.net'  # Adresa serverului SMTP
 # EMAIL_PORT = 587  # Portul serverului SMTP
@@ -28,6 +32,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+APIKEY = os.getenv("OPENAI_APIKEY")
+
 SECRET_KEY = 'django-insecure-l$#oqa1w0gg)#+2ahy16kusi)+n30kd)am0u+g)t1rbz-4f!h-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -38,6 +44,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #external apps
+    'rest_framework',
+    'rest_framework.authtoken',
+    #internal apps
+    'api',
+    #default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +61,6 @@ INSTALLED_APPS = [
     'ticket',
     'user',
     'authentication',
-
 ]
 
 MIDDLEWARE = [
@@ -138,3 +149,8 @@ STATICFILES_DIRS = ['static/']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #CRISPY_TEMPLATE_PACK = 'bootstrap4'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}

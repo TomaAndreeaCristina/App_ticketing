@@ -1,0 +1,35 @@
+{% extends 'layout/base.html' %}
+{% block title %} Ticket #{{ticket.id}} {% endblock %}
+{% block content %}
+<div class="ticket">
+ <table class="styled-table">
+ <h2> Ticket #{{ticket.id}}</h2>
+ <tbody>
+  <tr>
+   <td>Numar Ticket:</td>
+   <td>{{ticket.nume_societate}}</td>
+  </tr>
+  <tr>
+   <td>Status:</td>
+   <td>{{ticket.status_ticket}}</td>
+  </tr>
+  <tr>
+   <td>User:</td>
+   <td>{{ticket.user}}</td>
+  </tr>
+  <tr>
+   <td>Descriere:</td>
+   <td>{{ticket.descriere_ticket}}</td>
+  </tr>
+  <tr>
+   <td>Data deschidere:</td>
+   <td>{{ticket.data_inregistrare_ticket}}</td>
+  </tr>
+  <tr>
+   <td>Data inchidere:</td>
+   <td>{{ticket.data_inchidere_ticket}}</td>
+  </tr>
+ </tbody>
+ </table>
+</div>
+{% endblock %}

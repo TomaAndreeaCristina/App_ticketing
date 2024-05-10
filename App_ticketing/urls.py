@@ -23,5 +23,6 @@ urlpatterns = [
     path('authentication/', include('authentication.urls')),
     path('servicii/', include('servicii.urls')),
     path('ticket/', include('ticket.urls')),
-    path('user/', include('authentication.urls'))
+    path('user/', include('authentication.urls')),
+    path('api/v1/', include('api.urls'))
 ]

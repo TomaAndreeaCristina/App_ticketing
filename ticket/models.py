@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from authentication.models import CustomUser
+from django.contrib import admin
 
 
 # Create your models here.
@@ -22,5 +23,8 @@ class TicketModel(models.Model):
     data_inregistrare_ticket = models.DateField(auto_now_add=True, null=False)
     data_inchidere_ticket = models.DateField(auto_now=True, null=False)
     document = models.FileField(upload_to='documents/', null=True, blank=True)
+
+
+
 
 

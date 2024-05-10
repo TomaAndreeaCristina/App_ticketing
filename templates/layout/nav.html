@@ -16,9 +16,11 @@
                     <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
                         <button type="submit" class="btn nav-link">Sign out</button>
+                        
                     </form>
                 </li>
-
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Lista Tickete</a></li>
             </ul>
         </div>
     </div>

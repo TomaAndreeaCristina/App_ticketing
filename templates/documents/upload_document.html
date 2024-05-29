@@ -1,0 +1,32 @@
+{% extends 'layout/base.html' %}
+{% block title %} Ticket #{{ ticket.id }} {% endblock %}
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+
+            <!-- Display uploaded documents -->
+            {% if ticket.uploaded_documents.all %}
+                <p class="card-text">Documente încărcate:</p>
+                <ul>
+                    {% for document in ticket.uploaded_documents.all %}
+                        <li><a href="{{ document.file.url }}">{{ document.file.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+
+
+            <!--Adaugare documente-->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="document">Încărcați document:</label>
+                <input type="file" name="document" id="document">
+                <input type="submit" value="Trimiteți">
+            </form>
+
+            <div class="text-md-end" style="position: relative; right: 10px;margin-top: 20px;">
+                <a href="{% url 'delete_ticket' ticket.id %}" class="btn btn-primary">Sterge Ticketul</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

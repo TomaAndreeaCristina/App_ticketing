@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'ticket',
     'user',
     'authentication',
+    'documents',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'document_storage')
+MEDIA_URL = '/document_storage/'

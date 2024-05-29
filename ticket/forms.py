@@ -26,3 +26,5 @@ class SolveTicketForm(ModelForm):
     class Meta:
         model = TicketModel
         fields = "__all__"
+
+

@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,  include
 from servicii.views import ServiciiUpdateView, ServiciiCreateView, ServiciiDeleteView
 from ticket.views import TicketDetailsView, UserTicketListView, CreateTicketView, CreateUpdateFormView, EditTicketView, \
     DeleteTicketView, ListaTicketView, EditTicketIdView

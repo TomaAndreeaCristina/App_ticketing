@@ -11,7 +11,8 @@ from django.views.generic.edit import UpdateView
 from django.views.generic import View
 from django.shortcuts import render
 from user.models import UserModel
-from django.http import HttpResponse
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 
 class CreateTicketView(CreateView):
@@ -132,3 +133,5 @@ def index(request):
 def ticket_by_id(request, ticket_id):
     ticket = TicketModel.objects.get(pk=ticket_id)
     return render(request, 'ticket/ticket_by_id.html', {'ticket': ticket})
+
+
